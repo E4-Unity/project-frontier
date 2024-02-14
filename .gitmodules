@@ -1,0 +1,4 @@
+[submodule "Frontier/Assets/Frontier/AssetCollections"]
+	path = Frontier/Assets/Frontier/AssetCollections
+	url = https://github.com/E4-Unity/project-frontier-asset-collections.git
+	branch = master

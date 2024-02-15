@@ -1,8 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace Frontier.Tests
+namespace Frontier.Editor.Tests
 {
     [TestFixture]
     public class AttributeSetTests
@@ -45,8 +44,8 @@ namespace Frontier.Tests
         /// </summary>
         /// <param name="value">MaxHealth</param>
         [Test]
-        [TestCaseSource(nameof(FixedValues))]
-        [TestCaseSource(nameof(RandomValues))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.FixedFloats))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.RandomAllFloats))]
         public void SetMaxHealthTest(float value)
         {
             // 1 <= MaxHealth
@@ -60,8 +59,8 @@ namespace Frontier.Tests
         /// </summary>
         /// <param name="ratio">Health / MaxHealth</param>
         [Test]
-        [TestCaseSource(nameof(FixedValues))]
-        [TestCaseSource(nameof(RandomValues))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.FixedFloats))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.RandomAllFloats))]
         public void SetHealthTest(float ratio)
         {
             // 0 <= Health <= MaxHealth
@@ -99,8 +98,8 @@ namespace Frontier.Tests
         /// </summary>
         /// <param name="value">MaxHealth</param>
         [Test]
-        [TestCaseSource(nameof(FixedValues))]
-        [TestCaseSource(nameof(RandomValues))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.FixedFloats))]
+        [TestCaseSource(typeof(TestCaseSourceLibrary), nameof(TestCaseSourceLibrary.RandomAllFloats))]
         public void HealthRatioTest(float value)
         {
             // TODO ratio 도 랜덤 값으로 여러 번 테스트
@@ -119,30 +118,5 @@ namespace Frontier.Tests
             // MaxHealth 값 변화로 인해 사망 처리가 되면 안 됩니다
             Assert.That(IsDead, Is.EqualTo(false));
         }
-
-        /* Test Case Source */
-        /// <summary>
-        /// 랜덤 테스트 케이스 생성
-        /// </summary>
-        /// <returns>float.MinValue ~ float.MaxValue 범위 사이의 랜덤 값</returns>
-        public static float[] RandomValues()
-        {
-            float[] values = new float[100];
-            for (var i = 0; i < values.Length; i++)
-            {
-                values[i] = Random.Range(float.MinValue, float.MaxValue);
-            }
-
-            return values;
-        }
-
-        /// <summary>
-        /// 고정 테스트 케이스 생성
-        /// </summary>
-        /// <returns></returns>
-        public static float[] FixedValues() => new float[]
-        {
-            float.MinValue, float.MinValue * 0.5f, 0, float.MaxValue * 0.5f, float.MaxValue
-        };
     }
 }

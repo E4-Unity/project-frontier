@@ -3,7 +3,9 @@
     "rootNamespace": "Frontier.Tests",
     "references": [
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "Frontier",
+        "Frontier.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -7,7 +7,7 @@ namespace Frontier.Editor.Tests
     public class AttributeSetTests
     {
         /* AttributeSet */
-        AttributeSet m_HealthAttribute = new AttributeSet();
+        DefaultAttributeSet m_HealthAttribute = new DefaultAttributeSet();
 
         float MaxHealth
         {

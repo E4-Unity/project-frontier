@@ -1,4 +1,3 @@
-using System;
 using Random = UnityEngine.Random;
 
 namespace Frontier.Editor.Tests
@@ -35,12 +34,24 @@ namespace Frontier.Editor.Tests
         }
 
         /// <summary>
-        /// 고정 테스트 케이스 생성
+        /// 고정 테스트 케이스를 생성합니다.
+        /// 랜덤 테스트는 매우 큰 값을 다루기 때문에 상대적으로 작은 값은 오차 범위에 포함되기 때문에 고정 테스트 케이스 역시 필요합니다.
         /// </summary>
         /// <returns></returns>
         public static float[] FixedFloats() => new float[]
         {
-            float.MinValue, float.MinValue * 0.5f, 0, float.MaxValue * 0.5f, float.MaxValue
+            float.MinValue, float.MaxValue, 0,
+            1, -1,
+            5, -5,
+            10, -10,
+            50, -50,
+            100, -100,
+            500, -500,
+            1000, -1000,
+            0.1f, -0.1f,
+            0.5f, -0.5f,
+            0.001f, -0.001f,
+            0.0005f, -0.0005f
         };
     }
 }
